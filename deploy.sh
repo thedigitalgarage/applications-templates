@@ -46,21 +46,10 @@ GHOST_MAIL_AUTH=mypassword
 
 # INSTANCES
 
-# GHOST INSTANCE
-oc new-app ${NAMESPACE}/ghost-style \
--e "GHOST_MAIL_ACCOUNT=${GHOST_MAIL_ACCOUNT}" \
--e "GHOST_MAIL_AUTH=${GHOST_MAIL_AUTH}" \
--e "MYSQL_SERVICE_HOST=${MYSQL_DATABASE_SERVICE_NAME}" \
--e "MYSQL_USER=${MYSQL_USER}" \
--e "MYSQL_PASSWORD=${MYSQL_PASSWORD}" \
--e "MYSQL_DATABASE=${MYSQL_DATABASE}"
+#####################################################################
+#####    KEYCLOAK						#####
+#####################################################################
 
-# MONGO-COCHERA INSTANCE
-oc new-app "mongodb-${MONGO_PERSISTENCE}" \
---param "DATABASE_SERVICE_NAME=${MONGODB_SERVICE_NAME}" \
---param "MONGODB_PASSWORD=${MONGODB_PASSWORD}" \
---param "MONGODB_USER=${MONGODB_USER}" \
---param "MONGODB_DATABASE=${MONGODB_DATABASE}"
 
 # MONGO-KEYCLOAK INSTANCE
 oc new-app "mongodb-${MONGO_KEYCLOAK_PERSISTENCE}" \
@@ -68,14 +57,6 @@ oc new-app "mongodb-${MONGO_KEYCLOAK_PERSISTENCE}" \
 --param "MONGODB_PASSWORD=${MONGODB_KEYCLOAK_PASSWORD}" \
 --param "MONGODB_USER=${MONGODB_KEYCLOAK_USER}" \
 --param "MONGODB_DATABASE=${MONGODB_KEYCLOAK_DATABASE}"
-
-# MYSQL-GHOST
-oc new-app "mysql-${MYSQL_PERSISTENCE}" \
---param "DATABASE_SERVICE_NAME=${MYSQL_DATABASE_SERVICE_NAME}" \
---param "MYSQL_USER=${MYSQL_USER}" \
---param "MYSQL_PASSWORD=${MYSQL_PASSWORD}" \
---param "MYSQL_DATABASE=${MYSQL_DATABASE}"
-
 
 # KEYCLOAK INSTANCE
 oc new-app ${NAMESPACE}/keycloak-mongo \
@@ -86,6 +67,37 @@ oc new-app ${NAMESPACE}/keycloak-mongo \
 -e "MONGODB_USER=${MONGODB_KEYCLOAK_USER}" \
 -e "MONGODB_PASSWORD=${MONGODB_KEYCLOAK_PASSWORD}"
 
+#####################################################################
+#####    GHOST							#####
+#####################################################################
+
+# MYSQL-GHOST
+oc new-app "mysql-${MYSQL_PERSISTENCE}" \
+--param "DATABASE_SERVICE_NAME=${MYSQL_DATABASE_SERVICE_NAME}" \
+--param "MYSQL_USER=${MYSQL_USER}" \
+--param "MYSQL_PASSWORD=${MYSQL_PASSWORD}" \
+--param "MYSQL_DATABASE=${MYSQL_DATABASE}"
+
+# GHOST INSTANCE
+oc new-app ${NAMESPACE}/ghost-style \
+-e "GHOST_MAIL_ACCOUNT=${GHOST_MAIL_ACCOUNT}" \
+-e "GHOST_MAIL_AUTH=${GHOST_MAIL_AUTH}" \
+-e "MYSQL_SERVICE_HOST=${MYSQL_DATABASE_SERVICE_NAME}" \
+-e "MYSQL_USER=${MYSQL_USER}" \
+-e "MYSQL_PASSWORD=${MYSQL_PASSWORD}" \
+-e "MYSQL_DATABASE=${MYSQL_DATABASE}"
+
+
+#####################################################################
+#####    COCHERA						#####
+#####################################################################
+
+# MONGO-COCHERA INSTANCE
+oc new-app "mongodb-${MONGO_PERSISTENCE}" \
+--param "DATABASE_SERVICE_NAME=${MONGODB_SERVICE_NAME}" \
+--param "MONGODB_PASSWORD=${MONGODB_PASSWORD}" \
+--param "MONGODB_USER=${MONGODB_USER}" \
+--param "MONGODB_DATABASE=${MONGODB_DATABASE}"
 
 # PRE:
 ## Create ghost admin account
