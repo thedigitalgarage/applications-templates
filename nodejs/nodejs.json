@@ -38,7 +38,7 @@
             },
             "from": {
               "kind": "DockerImage",
-              "name": "thedigitalgarage/sti-nodejs446-centos7:latest"
+              "name": "thedigitalgarage/sti-nodejs-446-centos7:latest"
             }
           },
           {
