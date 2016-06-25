@@ -23,22 +23,7 @@
             },
             "from": {
               "kind": "ImageStreamTag",
-              "name": "4.4.6"
-            }
-          },
-          {
-            "name": "4.4.6",
-            "annotations": {
-              "description": "Build and run NodeJS 4.4 applications",
-              "iconClass": "icon-nodejs",
-              "tags": "builder,nodejs",
-              "supports": "nodejs:4.4.6,nodejs:4.4,nodejs",
-              "version": "4.4.6",
-              "sampleRepo": "https://github.com/thedigitalgarage/nodejs-ex.git"
-            },
-            "from": {
-              "kind": "DockerImage",
-              "name": "thedigitalgarage/sti-nodejs-446-centos7:latest"
+              "name": "0.10"
             }
           },
           {
@@ -53,7 +38,7 @@
             },
             "from": {
               "kind": "DockerImage",
-              "name": "thedigitalgarage/sti-nodejs010-centos7:latest"
+              "name": "openshift/nodejs-010-centos7:latest"
             }
           }
         ]
