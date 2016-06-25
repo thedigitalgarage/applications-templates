@@ -19,14 +19,28 @@
               "iconClass": "icon-nodejs",
               "tags": "builder,nodejs",
               "supports": "nodejs",
-              "sampleRepo": "https://github.com/openshift/nodejs-ex.git"
+              "sampleRepo": "https://github.com/thedigitalgarage/nodejs-ex.git"
             },
             "from": {
               "kind": "ImageStreamTag",
-              "name": "0.10"
+              "name": "4.4.6"
             }
           },
           {
+            "name": "4.4.6",
+            "annotations": {
+              "description": "Build and run NodeJS 4.4 applications",
+              "iconClass": "icon-nodejs",
+              "tags": "builder,nodejs",
+              "supports": "nodejs:4.4.6,nodejs:4.4,nodejs",
+              "version": "4.4.6",
+              "sampleRepo": "https://github.com/thedigitalgarage/nodejs-ex.git"
+            },
+            "from": {
+              "kind": "DockerImage",
+              "name": "thedigitalgarage/sti-nodejs446-centos7:latest"
+            },
+            {
             "name": "0.10",
             "annotations": {
               "description": "Build and run NodeJS 0.10 applications",
@@ -34,11 +48,11 @@
               "tags": "builder,nodejs",
               "supports": "nodejs:0.10,nodejs:0.1,nodejs",
               "version": "0.10",
-              "sampleRepo": "https://github.com/openshift/nodejs-ex.git"
+              "sampleRepo": "https://github.com/thedigitalgarage/nodejs-ex.git"
             },
             "from": {
               "kind": "DockerImage",
-              "name": "thedigitalgarage/sti-nodejs"
+              "name": "thedigitalgarage/sti-nodejs010-centos7:latest"
             }
           }
         ]
