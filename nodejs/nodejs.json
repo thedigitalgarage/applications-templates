@@ -39,8 +39,9 @@
             "from": {
               "kind": "DockerImage",
               "name": "thedigitalgarage/sti-nodejs446-centos7:latest"
-            },
-            {
+            }
+          },
+          {
             "name": "0.10",
             "annotations": {
               "description": "Build and run NodeJS 0.10 applications",
