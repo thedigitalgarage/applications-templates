@@ -535,7 +535,7 @@
       "description": "Name of the MySQL database accessed.",
       "value": "ghost",
       "required": true
-    }
+    },
     {
       "name": "VOLUME_CAPACITY",
       "displayName": "Volume Capacity",
